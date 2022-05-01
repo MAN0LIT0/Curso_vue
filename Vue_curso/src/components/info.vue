@@ -9,6 +9,9 @@
             <li>Python</li>
             <li>Vue</li>
         </ul>
+        <div>
+            <button @click="showEmail">{{ mostrar_botao }}</button>
+        </div>
         <Picture />
         <p v-show="mostrar_email">Mande uma mensagem para: {{ email }}</p>
         <p>Para acessar meu portifólio <a v-bind:href="meu_link" target="_blank">basta clicar aqui</a></p>
@@ -24,10 +27,21 @@ export default {
     data() {
         return {
             esta_trabalhando: true,
-            mostrar_email: true,
+            mostrar_email: false,
             email: 'marcopirocadepano@gmail.com',
-            meu_link: 'https://google.com'
+            meu_link: 'https://google.com',
+            mostrar_botao: 'Mostrar E-mail'
         }
+    },
+    methods: {
+        showEmail(){
+            this.mostrar_email = !this.mostrar_email
+            if(!this.mostrar_email){
+                this.mostrar_botao = 'Mostrar E-mail'
+            }else{
+                this.mostrar_botao = 'Esconder E-mail'
+            }
+        }    
     },
 }
 </script>
